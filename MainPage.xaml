@@ -1,30 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ADIS_authenticator.MainPage">
+             x:Class="ADIS_authenticator.MainPage"
+             xmlns:viewmodel="clr-namespace:ADIS_authenticator.ViewModels"
+             x:DataType="viewmodel:MainViewModel">
     <AbsoluteLayout
         HorizontalOptions="FillAndExpand"
         VerticalOptions="FillAndExpand"
         BackgroundColor="#189f20">
         <StackLayout VerticalOptions="Center">
             <CollectionView x:Name="collectionView" 
-                            ItemsLayout="VerticalList">
+                            ItemsLayout="VerticalList"
+                            ItemsSource="{Binding Codes}">
                 <CollectionView.ItemTemplate>
-                    <DataTemplate>
+                    <DataTemplate x:DataType="{x:Type x:String}">
                         <Grid HorizontalOptions="CenterAndExpand">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>   
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Frame Margin="10" Grid.Column="1"
                                BackgroundColor="#303D38">
                                 <StackLayout>
-                                    <Label Text="{Binding Label}"
+                                    <Label Text="{Binding .}"
                                        TextColor="#E0BCD1"
                                        FontAttributes="Bold"
                                        FontSize="25"/>
-                                    <Label Text="{Binding AOTP.Code}"
+                                    <Label Text="{Binding .}"
                                            FontSize="20"/>
                                 </StackLayout>
                             </Frame>
@@ -44,7 +47,7 @@
             CornerRadius="25"
             Source="plus_icon.png"
             Aspect="AspectFit"
-            >
+            Command="{Binding UpdateCommand}">
             <ImageButton.Shadow>
                 <Shadow
                     Brush="#000"
