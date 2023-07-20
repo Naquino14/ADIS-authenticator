@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ADIS_authenticator.MainPage"
              xmlns:local="clr-namespace:ADIS_authenticator.ViewModels"
+             xmlns:ns="clr-namespace:ADIS_authenticator.Models"
              x:DataType="local:MainViewModel">
     <AbsoluteLayout
         HorizontalOptions="FillAndExpand"
@@ -13,7 +14,7 @@
                             ItemsLayout="VerticalList"
                             ItemsSource="{Binding Codes}">
                 <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="{x:Type local:OTPCode}">
+                    <DataTemplate x:DataType="{x:Type ns:OTPCode}">
                         <Grid HorizontalOptions="CenterAndExpand">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>   
