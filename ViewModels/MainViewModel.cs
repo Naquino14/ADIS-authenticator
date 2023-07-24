@@ -32,4 +32,9 @@ public partial class MainViewModel : ObservableObject {
             }
         }
     }
+
+    [RelayCommand]
+    public void OnPlusClick() {
+        // display popup for qr code scanning
+    }
 }

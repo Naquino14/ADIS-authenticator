@@ -47,7 +47,8 @@
             HeightRequest="50"
             CornerRadius="25"
             Source="plus_icon.png"
-            Aspect="AspectFit">
+            Aspect="AspectFit"
+            Command="{Binding PlusClickCommand}">
             <ImageButton.Shadow>
                 <Shadow
                     Brush="#000"
