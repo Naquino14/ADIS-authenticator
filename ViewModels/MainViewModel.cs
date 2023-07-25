@@ -25,7 +25,7 @@ public partial class MainViewModel : ObservableObject {
             for (int i = 0; i < Codes.Count; i++) {
                 if (Codes[i].Code != Codes[i].lastCode) {
                     var temp = Codes[i];
-                    Codes[i] = null;
+                    Codes[i] = null!;
                     Codes[i] = temp;
                     Codes[i].Code = Codes[i].Code;
                 }
@@ -34,7 +34,8 @@ public partial class MainViewModel : ObservableObject {
     }
 
     [RelayCommand]
-    public void OnPlusClick() {
+    public async Task OnPlusClick() {
         // display popup for qr code scanning
+        await Shell.Current.GoToAsync(nameof(CamPopUp));
     }
 }

@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net6.0-android;net6.0-ios;net6.0-maccatalyst</TargetFrameworks>
-		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net6.0-windows10.0.19041.0</TargetFrameworks>
+		<TargetFrameworks>net7.0-android;net7.0-ios;net7.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.19041.0</TargetFrameworks>
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
-		<!-- <TargetFrameworks>$(TargetFrameworks);net6.0-tizen</TargetFrameworks> -->
+		<!-- <TargetFrameworks>$(TargetFrameworks);net7.0-tizen</TargetFrameworks> -->
 		<OutputType>Exe</OutputType>
 		<RootNamespace>ADIS_authenticator</RootNamespace>
 		<UseMaui>true</UseMaui>
@@ -52,20 +52,30 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <PackageReference Include="Camera.MAUI" Version="1.4.4" />
+	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Tools\" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Reference Include="ACH-1 Demonstrator">
 	    <HintPath>..\ACH-1\ACH-1 Demonstrator\ACH-1 Demonstrator\bin\Release\net6.0\ACH-1 Demonstrator.dll</HintPath>
 	  </Reference>
 	  <Reference Include="AOTP-1">
 	    <HintPath>..\AOTP-1\bin\Release\net6.0\AOTP-1.dll</HintPath>
 	  </Reference>
+	  <Reference Include="ARC-128">
+	    <HintPath>..\ARC-128\ARC-128\bin\Release\net6.0\ARC-128.dll</HintPath>
+	  </Reference>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.1" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Tools\" />
+	  <MauiXaml Update="CamPopUp.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>
